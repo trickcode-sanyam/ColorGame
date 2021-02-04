@@ -12,6 +12,7 @@
   justify-content: center;
   align-items: center;
   color: aliceblue;
+  text-shadow: 0px 0px 10px black;
 }
 #header-clue {
   font-family: 'Staatliches';
@@ -51,7 +52,10 @@
   justify-content: center;
   cursor: pointer;
 }
-
+#new:hover{
+  background-color: skyblue;
+  color: black;
+}
 #new{
   width: 80%;
   background-color: blue;
@@ -59,6 +63,8 @@
   text-align: center;
   color: white;
   box-sizing: border-box;
+  border: 3px solid blue;
+  transition-duration: 0.2s;
 }
 
 .tile {
@@ -67,8 +73,11 @@
   background-color: aliceblue;
   cursor: pointer;
   border: 2px solid white ;
+  transition-duration: 0.2s;
 }
-
+.tile:hover{
+  box-shadow: 0 0 50px white;
+}
 .counter{
   box-sizing: border-box;
   position: fixed;
@@ -83,6 +92,7 @@
   justify-content: space-around;
   align-items:center;
   font-family: 'Balsamiq Sans',sans-serif;
+  box-shadow: 1px 1px 10px black;
 }
 
 #count{
