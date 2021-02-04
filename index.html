@@ -4,64 +4,215 @@
   <head>
     <title>Color Game</title>
     <link rel="stylesheet" href="./index.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Sen:wght@400;700;800&family=Staatliches&display=swap" rel="stylesheet">
   </head>
   <body onload="newGame()">
+    <div class="counter">
+      <div id='playend'>Attempts</div>
+      <div id="count">0</div>
+      <!-- spaces before and after span tag not rendered, why -->
+    </div>
     <div id="header">
       <h2>The Great</h2>
-      <h1 id="header-clue">rgb(xxx,xxx,xxx)</h1>
       <h2>Guessing Game</h2>
+      <h1 id="header-clue">rgb(xxx,xxx,xxx)</h1>
     </div>
-    <div id="container">
-      <div class="tile" id="1"></div>
-      <div class="tile" id="2"></div>
+    <div id="big">
+      <div id="container1">
+      
+        <div class="tile" id="1"></div>
+        <div class="tile" id="2"></div>
+        <div class="tile" id="3"></div>
+        
+      </div>
+      <div id="container2">
+      
+        <div class="tile" id="4"></div>
+        <div class="tile" id="5"></div>
+        <div class="tile" id="6"></div>
+        
+      </div>
+      <div id='bottom'>
+        <div id="new">
+          New Game
+        </button>
+      </div>
     </div>
+
+
+
+
+    
+
+
 
     <script>
       var t1 = document.getElementById("1");
       var t2 = document.getElementById("2");
+      var t3 = document.getElementById("3");
+      var t4 = document.getElementById("4");
+      var t5 = document.getElementById("5");
+      var t6 = document.getElementById("6");
+      var congo = document.getElementById('playend')
+      var count = document.getElementById('count')
       var x;
       var correctColor;
-
+      var counter=0;
+      var gameplay;
       function getRandomColor() {
         var letters = "0123456789ABCDEF";
         var color = "#";
         for (var i = 0; i < 6; i++) {
           color += letters[Math.floor(Math.random() * 16)];
         }
+        console.log(color)
         return color;
+
       }
 
       function newGame() {
         t1.style.background = getRandomColor();
         t2.style.background = getRandomColor();
-
-        x = Math.floor(Math.random() * 2 + 1);
+        t3.style.background = getRandomColor();
+        t4.style.background = getRandomColor();
+        t5.style.background = getRandomColor();
+        t6.style.background = getRandomColor();
+        x = Math.floor(Math.random() * 6 + 0.99);
+        // ask for 1, chances that x=7
 
         if (x == 1) correctColor = t1.style.background;
-        else correctColor = t2.style.background;
+        else if (x == 1) correctColor = t2.style.background;
+        else if (x == 1) correctColor = t3.style.background;
+        else if (x == 1) correctColor = t4.style.background;
+        else if (x == 1) correctColor = t5.style.background;
+        else correctColor = t6.style.background;
         /* console.log(x);
         console.log(correctColor); */
-
+        gameplay = true;
+        congo.innerHTML='Attempts'
+        counter = 0;
+        count.innerHTML='0';
         document.getElementById("header-clue").innerHTML = correctColor;
+        document.getElementById('header').style.backgroundColor = 'rgb(110, 86, 240)';
       }
 
       t1.addEventListener("click", function () {
-        if (t1.style.background == correctColor) {
-          t2.style.background = correctColor;
-          document.getElementById("header").style.background = correctColor;
-        } else {
-          t1.style.background = "black";
+        if (gameplay == true){
+          if (t1.style.background == correctColor) {
+            t2.style.background = correctColor;
+            t3.style.background = correctColor;
+            t4.style.background = correctColor;
+            t5.style.background = correctColor;
+            t6.style.background = correctColor;
+            document.getElementById("header").style.background = correctColor;
+            congo.innerHTML='Congo! 🎉😀';
+            gameplay = false;
+          } else {
+            t1.style.background = "white";
+          }
+          counter+=1;
+          count.innerHTML=counter
         }
       });
 
       t2.addEventListener("click", function () {
+        if (gameplay == true){
         if (t2.style.background == correctColor) {
           t1.style.background = correctColor;
+          t3.style.background = correctColor;
+          t4.style.background = correctColor;
+          t5.style.background = correctColor;
+          t6.style.background = correctColor;
           document.getElementById("header").style.background = correctColor;
+        congo.innerHTML='Congo! 🎉😀'
+            gameplay = false;
         } else {
-          t2.style.background = "black";
+          t2.style.background = "white";
+        }
+        counter+=1;
+        count.innerHTML=counter
         }
       });
+
+      t3.addEventListener("click", function () {
+        if (gameplay == true){
+        if (t3.style.background == correctColor) {
+          t2.style.background = correctColor;
+          t1.style.background = correctColor;
+          t4.style.background = correctColor;
+          t5.style.background = correctColor;
+          t6.style.background = correctColor;
+          document.getElementById("header").style.background = correctColor;
+        congo.innerHTML='Congo! 🎉😀'
+            gameplay = false;
+        } else {
+          t3.style.background = "white";
+        }
+        counter+=1;
+        count.innerHTML=counter
+        }
+      });
+
+      t4.addEventListener("click", function () {
+        if (gameplay == true){
+        if (t4.style.background == correctColor) {
+          t2.style.background = correctColor;
+          t1.style.background = correctColor;
+          t3.style.background = correctColor;
+          t5.style.background = correctColor;
+          t6.style.background = correctColor;
+          document.getElementById("header").style.background = correctColor;
+        congo.innerHTML='Congo! 🎉😀'
+            gameplay = false;
+        } else {
+          t4.style.background = "white";
+        }
+        counter+=1;
+        count.innerHTML=counter
+        }
+      });
+
+      t5.addEventListener("click", function () {
+        if (gameplay == true){
+        if (t5.style.background == correctColor) {
+          t2.style.background = correctColor;
+          t1.style.background = correctColor;
+          t4.style.background = correctColor;
+          t3.style.background = correctColor;
+          t6.style.background = correctColor;
+          document.getElementById("header").style.background = correctColor;
+        congo.innerHTML='Congo! 🎉😀'
+            gameplay = false;
+        } else {
+          t5.style.background = "white";
+        }
+        counter+=1;
+        count.innerHTML=counter
+        }
+      });
+
+      t6.addEventListener("click", function () {
+        if (gameplay == true){
+        if (t6.style.background == correctColor) {
+          t2.style.background = correctColor;
+          t1.style.background = correctColor;
+          t4.style.background = correctColor;
+          t5.style.background = correctColor;
+          t3.style.background = correctColor;
+          document.getElementById("header").style.background = correctColor;
+        congo.innerHTML='Congo! 🎉😀'
+            gameplay = false;
+        } else {
+          t6.style.background = "white";
+        }
+        counter+=1;
+        count.innerHTML=counter
+        }
+      });
+
+
+      var btNew = document.getElementById('bottom')
+      btNew.addEventListener("click",newGame)
     </script>
   </body>
 </html>
